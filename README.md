@@ -1,6 +1,20 @@
 # Smart Productivity Hub
 
-Smart Productivity Hub is an AI-powered productivity platform that combines email generation, meeting note summarization, and task planning into a single modern web application. The goal is to help professionals improve communication, organize information efficiently, and manage workloads more effectively.
+Smart Productivity Hub is an AI-powered productivity platform that combines email generation, meeting note summarization, and task planning into a single modern web application. It helps professionals improve communication, organize information efficiently, and manage workloads more effectively.
+
+> Live preview and published builds are managed through Lovable.
+
+## Table of Contents
+
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [Available Scripts](#available-scripts)
+- [Pages](#pages)
+- [Responsible AI](#responsible-ai)
+- [Roadmap](#roadmap)
+- [License](#license)
 
 ## Features
 
@@ -40,7 +54,7 @@ Smart Productivity Hub is an AI-powered productivity platform that combines emai
 * Organizes workload efficiently
 * Provides productivity and time-management recommendations
 
-## Dashboard
+### Dashboard
 
 The application includes a centralized dashboard that provides:
 
@@ -49,63 +63,90 @@ The application includes a centralized dashboard that provides:
 * Recent activity tracking
 * Summary statistics and insights
 
-## User Interface
+## Tech Stack
 
-* Modern SaaS-inspired design
-* Responsive layout for desktop, tablet, and mobile devices
-* Sidebar navigation
-* Clean and intuitive user experience
-* Dark mode support
-* Professional and accessible UI components
+- **Framework:** React 19 + TanStack Start (Vite 7)
+- **Language:** TypeScript (strict)
+- **Styling:** Tailwind CSS v4, shadcn/ui
+- **Icons:** Lucide React
+- **Routing:** TanStack Router (file-based)
+- **State:** React Context + `localStorage` persistence
+- **AI logic:** Local mock generators in `src/lib/mock-ai.ts` (swap-ready for a real provider)
 
-## Technology Stack
+## Getting Started
 
-### Frontend
+Prerequisites: [Bun](https://bun.sh) (recommended) or Node.js 20+.
 
-* React
-* TypeScript
-* Tailwind CSS
-* shadcn/ui
+```bash
+# install dependencies
+bun install
 
-### UI & UX
+# start the dev server
+bun run dev
 
-* Lucide React Icons
-* Framer Motion
-* Responsive Design
+# build for production
+bun run build
+```
 
-### Forms & State Management
+The app runs on `http://localhost:8080` by default.
 
-* React Hook Form
-* Context API / Zustand
+## Project Structure
+
+```
+src/
+  components/        Reusable UI + app shell and sidebar
+    ui/              shadcn/ui primitives
+  lib/
+    mock-ai.ts       Email / meeting / planner generators
+    store.tsx        Context store + localStorage persistence
+  routes/            File-based routes (TanStack Router)
+    __root.tsx       Root layout, head metadata
+    index.tsx        Dashboard
+    email.tsx        Smart Email Generator
+    meetings.tsx     Meeting Notes Summarizer
+    tasks.tsx        AI Task Planner
+    history.tsx      Generated content history
+    settings.tsx     User preferences
+  styles.css         Tailwind v4 theme tokens
+```
+
+## Available Scripts
+
+| Command | Description |
+| --- | --- |
+| `bun run dev` | Start the local dev server |
+| `bun run build` | Build the production bundle |
+| `bun run start` | Run the built app |
+| `bun run lint` | Lint the project with ESLint |
 
 ## Pages
 
-* Dashboard
-* Smart Email Generator
-* Meeting Notes Summarizer
-* AI Task Planner
-* History
-* Settings
-
-## Future Enhancements
-
-* OpenAI API integration
-* Gemini API integration
-* User authentication
-* Cloud data storage
-* Export to PDF and Excel
-* Calendar integration
-* Team collaboration features
-* Advanced analytics and reporting
+| Route | Description |
+| --- | --- |
+| `/` | Dashboard with stats, quick actions, recent activity |
+| `/email` | Smart Email Generator |
+| `/meetings` | Meeting Notes Summarizer |
+| `/tasks` | AI Task Planner |
+| `/history` | Searchable history of generated content |
+| `/settings` | Dark mode, notifications, AI preferences |
 
 ## Responsible AI
 
-This application uses AI-generated content to assist users with productivity tasks. All generated outputs should be reviewed before use. Users remain responsible for final communications, schedules, and decisions.
+AI-generated content may contain inaccuracies. Users should review outputs before making business decisions. You remain responsible for final communications, schedules, and decisions.
 
-## Purpose
+## Roadmap
 
-Smart Productivity Hub was developed to demonstrate how AI can be integrated into everyday workplace workflows to improve efficiency, organization, and productivity through intelligent automation.
+- Real LLM integration (OpenAI / Gemini / Lovable AI Gateway)
+- User authentication and cloud sync
+- Export to PDF and Excel
+- Calendar integration
+- Team collaboration and sharing
+- Advanced analytics and reporting
+
+## License
+
+MIT
 
 ---
 
-**Smart Productivity Hub** – Simplifying communication, planning, and productivity with AI.
+**Smart Productivity Hub** — Simplifying communication, planning, and productivity with AI.
